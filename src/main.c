@@ -46,7 +46,7 @@ char* colorize_experiment(char *res,const char* color,const char* format,...){
 
 //Manual page sprintf(3) line 339/385
 void format_msg(int *(*format_func)(char *r,char* format,...),char *res,...){
-
+    
 }
 
 char* colorize(char** res,const char* color,const char *msg){
@@ -124,7 +124,11 @@ void parse_options(int argc,char **argv,options_tst* res_options){
     }
 }
 
+#include "cmdline.h"
+extern void hello();
 int main(int argc,char **argv){
+    hello() ;
+    return 1;
     options_tst options_st= {"",""};
     parse_options(argc,argv,&options_st);
     printf("src file :%s\n",options_st.src_file);
