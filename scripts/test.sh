@@ -3,6 +3,8 @@ seperator(){
     printf "\n----------------------------\n"
 }
 
+cd "$(git rev-parse --show-toplevel)/bin"
+
 seperator
 echo "[#1] ./main a"
 ./main -a

@@ -19,7 +19,7 @@ OBJ_FILES:=$(patsubst %.c,${BIN_DIR}/%.o,$(notdir ${SRC_FILES}))
 TARGET:=bin/main.exe
 LOG_PREFIX:=[Make]
 
-
+SCRIPT_DIR=scripts
 all:${TARGET}
 
 
@@ -106,5 +106,5 @@ clean: bin
 
 test: ${TARGET}
 	 #hack to eval ansi escape codes in wt git bash
-	./test.sh 2>&1 | cat
+	./${SCRIPT_DIR}/test.sh 2>&1 | cat
 
