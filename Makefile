@@ -71,7 +71,7 @@ endef
 
 define cmd-link-v2
 @$(call echo-info,"-------- Linking ---------");\
-$(call echo-cmd,"${CC} ${CFLAGS} ${INC} $1 -o $2");
+$(call echo-cmd,"${CC} ${CFLAGS} ${INC} $1 -o $2");\
 ${CC} ${CFLAGS} ${INC} $1 -o $2
 endef
 
@@ -101,10 +101,10 @@ ${TARGET}: ${OBJ_FILES}
 run: ${TARGET}
 	./${TARGET}
 
-clean: bin
-	rm bin/*.exe bin/*.o
+clean: ${BIN_DIR}
+	@[ ! -z "$(shell ls ${BIN_DIR}/*.exe 2>/dev/null)" ] && { echo "Cleaning ${BIN_DIR}/*.exe ";rm bin/*.exe ; } || echo "No *.exe in ${BIN_DIR} directory to clean";\
+	[ ! -z "$(shell ls ${BIN_DIR}/*.o 2>/dev/null)" ] && { echo "Cleaning ${BIN_DIR}/*.o ";rm bin/*.o ; } || echo "No *.o in ${BIN_DIR} directory to clean"
 
 test: ${TARGET}
 	 #hack to eval ansi escape codes in wt git bash
 	./${SCRIPT_DIR}/test.sh 2>&1 | cat
-
