@@ -124,11 +124,7 @@ void parse_options(int argc,char **argv,options_tst* res_options){
     }
 }
 
-#include "cmdline.h"
-extern void hello();
 int main(int argc,char **argv){
-    hello() ;
-    return 1;
     options_tst options_st= {"",""};
     parse_options(argc,argv,&options_st);
     printf("src file :%s\n",options_st.src_file);
