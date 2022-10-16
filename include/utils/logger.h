@@ -1,6 +1,7 @@
 #ifndef LOGGER_H
 #define LOGGER_H
 
+#include <stdio.h>
 #include "utils/logger.h"
 
 #define OPT_INPUT "opt_input"

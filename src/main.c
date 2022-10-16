@@ -5,6 +5,7 @@
 #include "utils/cmdline.h"
 #include "utils/logger.h"
 #include "utils/re.h"
+#include "utils/containers.h"
 
 void parse_options(int argc,char **argv,options_tst*options_st);
 
@@ -29,21 +30,92 @@ void scan_file(char *file_path){
         exit(EXIT_FAILURE);
     }
 
-    unsigned int n_line = 0;
+    //unsigned int n_line = 0;
     const size_t MAX_CHARS = 150;
+    const char* match_code_block = "```";
     //char* line = NULL;
     char *line = (char *)malloc(sizeof(char)*MAX_CHARS); //FREE THIS
     size_t c_line = MAX_CHARS;
     size_t n_read_char;//gets number of characters read;
+
+    stack_t *stack = make_stack();
+    while((n_read_char = getline(&line,&c_line,file))!=-1){
+        if(match(line,match_code_block)!=0){
+            if(stack->len>0){
+                pop(stack);
+            };
+
+        }
+
     }
     free(line);
+    fclose(file);
+    free(stack);
+
+}
+
+void extract_code(char *in_file_path,char *out_file_path){
+    printf("Reading file %s...\n",in_file_path);
+
+    FILE *in_file = NULL;//FREE THIS
+    FILE *out_file = NULL;//FREE THIS
+                          
+    if(!(in_file=fopen(in_file_path,"r"))){
+        error("[ce] \"%s\" couldn't be read.",in_file_path);
+        exit(EXIT_FAILURE);
+    }
+
+    if(!(out_file=fopen(out_file_path,"w+"))){
+        error("[ce] \"%s\" couldn't be opened.",out_file_path);
+        exit(EXIT_FAILURE);
+    }
+
+    //unsigned int n_line = 0;
+    const size_t MAX_CHARS = 150;
+    const char* match_code_block = "```";
+    //char* line = NULL;
+    char *line = (char *)malloc(sizeof(char)*MAX_CHARS); //FREE THIS
+    size_t c_line = MAX_CHARS;
+    size_t n_read_char;//gets number of characters read;
+
+    stack_t *stack = make_stack(); //FREE THIS
+    char add_newline = 0;//
+    while((n_read_char = getline(&line,&c_line,in_file))!=-1){
+        //printf("Stack len %d\n",stack->len);
+        if(match(line,match_code_block)!=0){
+            if(stack->len>0){
+                printf("Writing %s\n",line);
+                fprintf(out_file,line);
+            };
+            continue;
+        }
+        else{//matched
+            if(stack->len>0){
+                pop(stack);
+                continue;
+            }
+            push(stack);
+            if(!add_newline){
+                add_newline = 1;
+            }
+        }
+
+    }
+    if(add_newline){
+      fprintf(out_file,"\n");
+    }
+
+    free(line);
+    fclose(in_file);
+    fclose(out_file);
+    free(stack);
 
 }
 int main(int argc,char **argv){
     options_tst options_st= {"",""};
     parse_options(argc,argv,&options_st);
     print_options(options_st);
-    //scan_file(options_st.src_file);
+    extract_code(options_st.src_file,options_st.dest_file);
     return 0;
 }
 

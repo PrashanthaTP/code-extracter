@@ -1,3 +1,4 @@
+#include "utils/logger.h"
 #include "utils/re.h"
 
 /*
@@ -25,3 +26,18 @@ int match_archived(const char* string, char* pattern, int flag){
         
 }
 #endif
+
+int match(const char* string, const char* pattern){
+    while (*string != '\0' && *pattern != '\0'){
+        if(*string!=*pattern){
+            break;
+        }
+        string++;
+        pattern++;
+    }
+
+    if((*string == *pattern ) || (*string=='\n' && *pattern == '\0') || (*string == '\0' && *pattern == '\n')){
+        return 0;
+    }
+    return 1;
+}

@@ -32,7 +32,7 @@ void parse_options(int argc,char **argv,options_tst* res_options){
                 //getopt_long sets flag variable
                 break;
             //src file
-            case 'i':printf("Input %s\n",optarg);
+            case 'i'://printf("Input %s\n",optarg);
                     (*res_options).src_file =  optarg;
                      break;
             //dest file

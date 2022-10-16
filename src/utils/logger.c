@@ -1,5 +1,4 @@
 #include <stdarg.h> //v a_*
-#include <stdio.h>
 
 #include "utils/logger.h"
 
