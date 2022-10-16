@@ -16,6 +16,20 @@
 1. [`printf` wrapper](https://www.ozzu.com/wiki/504927/writing-a-custom-printf-wrapper-function-in-c)
 2. [`vprintf`](https://www.ibm.com/docs/en/zos/2.1.0?topic=functions-vprintf-format-print-data-stdout)
 
+### C
+* [Stackoverflow: Read line by line](https://stackoverflow.com/questions/3501338/c-read-file-line-by-line)
+* [Stackoverflow: Functions in pointers](https://stackoverflow.com/questions/4222661/functions-in-structure)
+* [regex : legends talk](https://stackoverflow.com/a/34824044/12988588)
+* [regcomp](https://pubs.opengroup.org/onlinepubs/009695399/functions/regcomp.html)
+
+### Makefile
+* [makefile-exit-on-conditional](https://stackoverflow.com/questions/58603062/makefile-exit-on-conditional)
+* [testing-if-a-file-exists-in-makefile-target-and-quitting-if-not-present](https://stackoverflow.com/questions/14348741/testing-if-a-file-exists-in-makefile-target-and-quitting-if-not-present)
+
+### Bash
+* [`find` maxdepth](https://unix.stackexchange.com/questions/275637/limit-posix-find-to-specific-depth)
+* [`find` dirs](https://unix.stackexchange.com/questions/46244/get-a-list-of-directory-names-with-find)
+
 ### Literate Programming
 1. [What is Literate Programming](https://web.stanford.edu/group/cslipublications/cslipublications/site/0937073806.shtml#:~:text=Literate%20programming%20is%20a%20programming,in%20a%20high%2Dlevel%20language.)
 
