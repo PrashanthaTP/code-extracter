@@ -72,7 +72,7 @@ endef
 define cmd-link-v2
 @$(call echo-info,"-------- Linking ---------");\
 $(call echo-cmd,"${CC} ${CFLAGS} ${INC} $1 -o $2");\
-${CC} ${CFLAGS} ${INC} $1 -I lib/libsystre/mingw32/include -L lib/libsystre/mingw32/lib -lsystre -o $2
+${CC} ${CFLAGS} ${INC} $1 -o $2
 endef
 
 #${CC} ${CFLAGS} ${INC} $1 -I lib/libsystre/mingw32/include -L lib/libsystre/mingw32/bin -L lib/libsystre/mingw32/lib -lregex -o $2

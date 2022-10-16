@@ -19,10 +19,11 @@ void print_options(options_tst options_st){
 //TODO : Track dynamically allocated variables
 //Read line by line : https://stackoverflow.com/questions/3501338/c-read-file-line-by-line
 //Functions in pointers : https://stackoverflow.com/questions/4222661/functions-in-structure
+
 void scan_file(char *file_path){
     printf("Reading file %s...\n",file_path);
 
-    FILE *file;
+    FILE *file;//FREE THIS
     if(!(file=fopen(file_path,"r"))){
         error("[ce] \"%s\" couldn't be read.",file_path);
         exit(EXIT_FAILURE);
@@ -34,10 +35,6 @@ void scan_file(char *file_path){
     char *line = (char *)malloc(sizeof(char)*MAX_CHARS); //FREE THIS
     size_t c_line = MAX_CHARS;
     size_t n_read_char;//gets number of characters read;
-    while((n_read_char = getline(&line,&c_line,file))!=1){
-        printf("%s",line);
-        printf("Re lib : %d\n", match(line,"^```\s*$",REG_ICASE));
-        return;
     }
     free(line);
 

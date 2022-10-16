@@ -7,7 +7,9 @@
  */
 
 #define ARRAY_SIZE(arr) (sizeof(arr)/sizeof(arr[0]))
-int match(const char* string, char* pattern, int flag){
+
+#ifdef USE_REGEX_LIB
+int match_archived(const char* string, char* pattern, int flag){
     int status;
     regex_t re;
     regmatch_t pmatch[1];//see man regexec
@@ -22,3 +24,4 @@ int match(const char* string, char* pattern, int flag){
     return 1;
         
 }
+#endif
