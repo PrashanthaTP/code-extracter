@@ -57,4 +57,5 @@ void parse_options(int argc,char **argv,options_tst* res_options){
 static void print_help(){
     printf("%s\n\n",program_version);
     printf("%s\n",doc);
+    exit(EXIT_SUCCESS);
 }
