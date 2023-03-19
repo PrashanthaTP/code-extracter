@@ -3,7 +3,9 @@ seperator(){
     printf "\n----------------------------\n"
 }
 
-cd "$(git rev-parse --show-toplevel)/bin"
+root_dir=$(git rev-parse --show-toplevel)
+cd "${root_dir}/bin"
+
 
 seperator
 echo "[#1] ./main a"
@@ -38,3 +40,18 @@ seperator
 
 echo "[#7] ./main -u"
     ./main -u
+
+seperator
+
+input_file=${root_dir}/temp/src.md
+output_file=${root_dir}/temp/output.md
+lang=python
+echo "[#8] ./main --input ${input_file} --output ${output_file} --lang ${lang}"
+./main --input ${input_file} --output ${output_file} --lang ${lang}
+
+seperator
+
+input_file=${root_dir}/temp/src.md
+output_file=${root_dir}/temp/dest.md
+echo "[#8] ./main --input ${input_file} --output ${output_file}"
+./main --input ${input_file} --output ${output_file}

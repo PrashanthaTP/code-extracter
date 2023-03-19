@@ -16,6 +16,7 @@ void parse_options(int argc,char **argv,options_tst* res_options){
         //*name,has_arg,*flag,val
         {"input",required_argument,NULL,'i'},
         {"output",required_argument,NULL,'o'},
+        {"lang",required_argument,NULL,'l'},
         {"help",no_argument,NULL,'h'},
         {NULL,0,NULL,0}
     };
@@ -37,8 +38,12 @@ void parse_options(int argc,char **argv,options_tst* res_options){
                      break;
             //dest file
             case 'o':printf("Output %s\n",optarg);
-                    res_options->dest_file = optarg;
+                     res_options->dest_file = optarg;
                       break;
+            //language
+            case 'l':printf("Language %s\n",optarg);
+                     res_options->lang = optarg;
+                     break;
             //help
             case 'h':print_help();
                      break;
@@ -57,5 +62,11 @@ void parse_options(int argc,char **argv,options_tst* res_options){
 static void print_help(){
     printf("%s\n\n",program_version);
     printf("%s\n",doc);
+    printf("Arguments : \n");
+    printf("\t --input  : %s\n","input markdown file path");
+    printf("\t --output : %s\n","output markdown file path");
+    printf("\t --output : %s\n","language of code blocks to be extracted");
+    printf("\t          : %s\n","if `lang` option not provided only '```' block will be extracted.");
+    printf("\t          : %s\n","otherwise '```lang' blocks will be extracted");
     exit(EXIT_SUCCESS);
 }

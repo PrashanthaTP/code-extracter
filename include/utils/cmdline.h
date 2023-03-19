@@ -4,6 +4,7 @@
 struct options_tst{
     char* src_file;
     char* dest_file;
+    char* lang;
 };
 
 typedef struct options_tst options_tst;
