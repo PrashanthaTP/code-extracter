@@ -27,6 +27,11 @@ int match_archived(const char* string, char* pattern, int flag){
 }
 #endif
 
+/**
+ * @param string : (char*) string to be searched
+ * @param pattern : (char*) pattern to be searched in string
+ * @ret int : 0 if matched else 1
+ */
 int match(const char* string, const char* pattern){
     while (*string != '\0' && *pattern != '\0'){
         if(*string!=*pattern){
